@@ -6,7 +6,7 @@ SECRET_KEY = '&$$r^mib+)#59vawt8lsu%dpku%b#_l*-!)&=&m3zc1cq#h2l#'
 DEBUG = True
 
 ALLOWED_HOSTS = []
-INSTALLED_APPS = []
+INSTALLED_APPS = ['rest_framework']
 MIDDLEWARE = []
 
 ROOT_URLCONF = 'ricards.urls'
