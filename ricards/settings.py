@@ -6,7 +6,14 @@ SECRET_KEY = '&$$r^mib+)#59vawt8lsu%dpku%b#_l*-!)&=&m3zc1cq#h2l#'
 DEBUG = True
 
 ALLOWED_HOSTS = []
-INSTALLED_APPS = ['rest_framework']
+INSTALLED_APPS = [
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'rest_framework',
+    'api'
+]
 MIDDLEWARE = []
 
 ROOT_URLCONF = 'ricards.urls'
@@ -35,8 +42,10 @@ DATABASES = {
     }
 }
 
+SITE_ID = 1
 LANGUAGE_CODE = 'en-us'
 TIME_ZONE = 'UTC'
 USE_I18N = True
 USE_L10N = True
 USE_TZ = True
+LOCKDOWN_ADMIN = False
