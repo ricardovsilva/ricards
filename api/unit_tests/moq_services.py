@@ -1,7 +1,9 @@
+from ..exceptions import InsuficientFundsException
+
 class AlwaysDenyPaymentService:
     def pay(self, payment_data):
-        return False
+        raise InsuficientFundsException()
 
 class AlwaysAllowPaymentService:
     def pay(self, payment_data):
-        return True
+        pass

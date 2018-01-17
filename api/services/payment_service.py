@@ -14,8 +14,10 @@ class PaymentService:
             raise Exception(transaction.type + " transaction type was not implemented yet!")
 
     def _authorize(self, transaction):
-        account = Account.objects.find(card_id=transaction.card_id).first
-
+        account, created = Account.objects.get_or_create(card_id=transaction.card_id, defaults={'money': 500})
+        account.reserve_money(transaction.billing_amount)
+        account.save()
+        transaction.save()
 
     def _execute_presentment(self, transaction):
         pass
