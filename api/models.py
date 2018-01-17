@@ -8,10 +8,12 @@ class Account(models.Model):
     base_currency = models.CharField(max_length=3)
 
     def reserve_money(self, amount):
-        pass
+        can_reserve = self.get_available_money() >= amount
+        if not can_reserve: raise InsuficientFundsException
+        self.reserved_money = (self.reserved_money or 0) + amount
 
     def get_available_money(self):
-        pass
+        return (self.money or 0) - (self.reserved_money or 0)
 
 class Transaction(models.Model): 
     TRANSACTION_TYPES = (('A', 'Authorisation'), ('P', 'Presentment'))
