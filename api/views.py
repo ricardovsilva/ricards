@@ -12,9 +12,7 @@ class TransactionsView(APIView):
     API endpoint allow operation, authorization or presentment, to be posted
     """
     def post(self, request, format=None):
-        transaction = Transaction.from_json(request.data)
-
-        if self.payment_service.pay(transaction):
+        if self.payment_service.pay(request.data):
             return Response(None, status=status.HTTP_200_OK)
         else:
             return Response(None, status=status.HTTP_403_FORBIDDEN)
