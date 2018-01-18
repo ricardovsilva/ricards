@@ -1,15 +1,18 @@
-from ..models import Account, Transaction, Transfer
+from api.models import Account, Transaction, Transfer
+from api.serializers import TransactionSerializer
+from api.exceptions import AuthorisationNotFoundException, AccountNotFoundException
 from datetime import datetime
-from ..exceptions import AuthorisationNotFoundException, AccountNotFoundException
+
 
 class PaymentService:
     def pay(self, transaction_data):
-        AUTHORISATION, PRESENTMENT = 'A', 'P'
-        transaction = Transaction.from_json(transaction_data)
+        transaction_serializer = TransactionSerializer(data=transaction_data)
+        if not transaction_serializer.is_valid(): raise Exception('invalid transaction data')
+        transaction = Transaction(**transaction_serializer.validated_data)
 
-        if transaction.type == AUTHORISATION:
+        if transaction.type == 'authorisation':
             return self._authorize(transaction)
-        elif transaction.type == PRESENTMENT:
+        elif transaction.type == 'presentment':
             return self._execute_presentment(transaction)
         else:
             raise Exception(transaction.type + " transaction type was not implemented yet!")
@@ -26,7 +29,7 @@ class PaymentService:
 
         authorisation = Transaction.objects.filter(
             transaction_id=presentment.transaction_id,
-            type='A',
+            type='authorisation',
             created_at__lt=datetime.now(),
             processed=False
         ).first()
