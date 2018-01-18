@@ -1,10 +1,7 @@
-import os
-import sys
 from django.test import TestCase
 from assertpy import assert_that
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
-from ..models import Account
-from ..exceptions import InsuficientFundsException
+from api.models import Account
+from api.exceptions import InsuficientFundsException
 
 class AccountTestCase(TestCase):
     def test__reserve_money__insuficient_funds__should_raise_insuficient_funds_exception(self):
