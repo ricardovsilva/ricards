@@ -17,6 +17,11 @@ class Account(models.Model):
         account.base_currency = base_currency
         return account
 
+    def add_money(self, amount, currency):
+        '''I choose to create a method to add_money because here it can consume some service
+           to provide currency exchange'''
+        self.money += amount
+
     def execute_presentment(self, amount):
         can_execute = amount <= self.reserved_money
         if not can_execute: raise InsuficientFundsException
