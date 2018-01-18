@@ -22,7 +22,7 @@ This system is developed using Python 3.6. So, in order to run that, Python 3.6 
 After that you will be allowed to perform RESTful operations to the API.
 
 ## Usage
-###Endpoints 
+### Endpoints 
 By now, the API has only one endpoint to post new transactions (authorisation and presentment).
 You can post a transaction to /transaction. Below are examples of authorisation and presentment jsons (all fields are mandatory):
 ```json
@@ -57,7 +57,7 @@ You can post a transaction to /transaction. Below are examples of authorisation 
     "settlement_currency": "EUR"
   }
 ```
-###Commands
+### Commands
 Is possible to load money to some account by console line. To do that follow the steps below:
 1. Navigate to root of project
 > $ cd ~/git/ricards
@@ -79,12 +79,12 @@ I'm doing this challenge with Django because it was a requirement, but to a prod
 I believe that Ruby + Sinatra is more adequated to that problem because of it's simplicity and development speed to create api's with a few endpoints.
 
 ## What is already developed?
-This problem has 3 main points to attack, so I'm trying to do that with baby steps. They are
+This problem has 3 main points to attack, so I'm trying to do that with baby steps. They are:
 
-[x] Account value management and authorization and money reservation
-[x] Transaction history to make presentment and effectivelly remove money from account
-[x] Transfer of money to other stakeholders in digital payment system
-[x] Create management command to load money into customer account
+- [x] Account value management and authorization and money reservation
+- [x] Transaction history to make presentment and effectivelly remove money from account
+- [x] Transfer of money to other stakeholders in digital payment system
+- [x] Create management command to load money into customer account
 
 ## Observations
 - This repository is highly opinated base;
