@@ -76,7 +76,8 @@ This problem has 3 main points to attack, so I'm trying to do that with baby ste
 
 [x] Account value management and authorization and money reservation
 [x] Transaction history to make presentment and effectivelly remove money from account
-[] Transfer of money to other stakeholders in digital payment system
+[x] Transfer of money to other stakeholders in digital payment system
+[] Create management command to load money into customer account
 
 ## Observations
 - This repository is highly opinated base;
